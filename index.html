@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YuviTech Internship</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="yyuvitech.png" type="image/x-icon">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      background: #fff;
+      padding: 30px;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      animation: fadeIn 0.6s ease;
+    }
+
+    h2 {
+      text-align: center;
+      color: #5e35b1;
+      margin-bottom: 5px;
+    }
+
+    p {
+      text-align: center;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 15px;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #5e35b1;
+    }
+
+    button {
+      background: #5e35b1;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 18px;
+    }
+
+    button:hover {
+      background: #4527a0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Radhe Radhe 🌸</h2>
+  <p>Apply for YuviTech Internship</p>
+
+  <input id="name" type="text" placeholder="Full Name">
+  <input id="email" type="email" placeholder="Email Address">
+  <input id="phone" type="tel" placeholder="Mobile Number">
+
+  <select id="domain">
+    <option value="">Select Internship Domain</option>
+    <option>Python Programming</option>
+    <option>Web Development</option>
+    <option>Data Science</option>
+    <option>Machine Learning</option>
+    <option>Artificial Intelligence</option>
+  </select>
+
+  <select id="plan">
+    <option value="">Select Internship Duration</option>
+    <option>1 Month/ 29Rs</option>
+    <option>3 Months/ 59Rs</option>
+  </select>
+
+  <button onclick="submitForm()">CONFIRM & SUBMIT</button>
+</div>
+
+<script>
+function submitForm() {
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const domain = document.getElementById("domain").value;
+  const plan = document.getElementById("plan").value;
+
+  if (!name || !email || !phone || !domain || !plan) {
+    alert("⚠️ Please fill all fields");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("phone", phone);
+  formData.append("domain", domain);
+  formData.append("plan", plan);
+
+  fetch("https://script.google.com/macros/s/AKfycbzRwExCg43gEiheeTEkV0upNwdmy0KDoILUMws06_BlT1c1Wt8FY4SunQT-2aIPB7zj/exec", {
+    method: "POST",
+    body: formData
+  });
+
+  // SUCCESS message directly
+  alert("✅ Form Submitted Successfully!");
+
+  // Reset fields
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("domain").value = "";
+  document.getElementById("plan").value = "";
+}
+</script>
+
+</body>
+</html>
